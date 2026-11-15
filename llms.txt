@@ -1,0 +1,19 @@
+# Quantum Bandit Certification
+
+Question: Can collective quantum measurements improve uniform certification of a known reference state against all fixed IID sources above a reward threshold?
+
+Result: At fixed finite dimension and an interior threshold above the null mean, every reference state has the classical spectral KL exponent at each fixed Type-I tolerance in (0,1), with a strong converse. Every finite measurement-block game has the same value. Unrestricted adaptive-memory bandit regret is not solved.
+
+- Model, exact assumptions and claims: science/model.md
+- Complete support-aware certification proof and endpoints: science/certification.md
+- Exact measured-divergence witness and regularized mixture entropy: science/modular_mixtures.md
+- Fixed-block common-measurement theorem and repetition proof: science/block_measurements.md
+- Complete qubit story and finite-copy test: science/examples.md
+- Scientific meaning and limits for learning: science/interpretation.md
+- Copies, coherent memory, controls, state descriptions and output: science/resources.md
+- Connected scientific route: science/README.md
+- Attribution and closest-work comparison: references/RELATED_WORK.md
+- Structured bibliography: references/references.bib
+- Reproducible finite checks: verification/README.md
+
+Keep these distinctions: known-null certification versus unknown-arm learning; shared-phase mixtures of IID alternatives versus per-copy drift; max-min common measurement versus min-max pairwise measurement; a leading error exponent versus equal finite-sample risks. Read proof qualifiers before transferring a theorem to another model.
