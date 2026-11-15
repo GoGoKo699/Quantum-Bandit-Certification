@@ -1,0 +1,171 @@
+{
+  "status": "passed",
+  "generated_at_utc": "2026-11-15T08:43:21.681714+00:00",
+  "script_sha256": "68ece766969d15df11ffc05c53b13167f243904d9790149539714dc3ee9dab45",
+  "seed": 20261115,
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "tolerances": {
+    "matrix_identity_absolute": 3e-09,
+    "relative_entropy_absolute": 2e-08
+  },
+  "classical_optimization": {
+    "cases": 18,
+    "max_primal_dual_value_error": 2.64310795472511e-12,
+    "zero_population_q_error": 3.469169396197458e-11,
+    "max_first_order_witness_excess": 6.661338147750939e-16,
+    "max_binary_closed_value_error": 1.1102230246251565e-16
+  },
+  "quantum_constructions": {
+    "cases": [
+      {
+        "name": "coherent_qubit",
+        "dimension": 2,
+        "copy_counts": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "populations": [
+          0.5,
+          0.5
+        ],
+        "optimizer": [
+          0.9499999999999998,
+          0.050000000000000044
+        ],
+        "K_nats": 0.8303656034108252,
+        "max_modular_identity_error": 3.3306690738754696e-16
+      },
+      {
+        "name": "pure_qubit",
+        "dimension": 2,
+        "copy_counts": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "populations": [
+          0.5,
+          0.5
+        ],
+        "optimizer": [
+          0.8499999999999999,
+          0.15000000000000002
+        ],
+        "K_nats": 0.33667227663188287,
+        "max_modular_identity_error": 2.220446049250313e-16
+      },
+      {
+        "name": "zero_population_leakage",
+        "dimension": 3,
+        "copy_counts": [
+          1,
+          2,
+          3
+        ],
+        "populations": [
+          0.6,
+          0.4,
+          0.0
+        ],
+        "optimizer": [
+          0.11999999999999997,
+          0.15999999999999998,
+          0.7200000000000001
+        ],
+        "K_nats": 1.3321790402101223,
+        "max_modular_identity_error": 5.551292625495649e-17
+      },
+      {
+        "name": "full_rank_three_atom",
+        "dimension": 3,
+        "copy_counts": [
+          1,
+          2,
+          3
+        ],
+        "populations": [
+          0.20326048432645638,
+          0.5471056517103332,
+          0.24963386396321027
+        ],
+        "optimizer": [
+          0.07166829385444577,
+          0.27665742648881864,
+          0.6516742796567355
+        ],
+        "K_nats": 0.34540127942529564,
+        "max_modular_identity_error": 5.556545972022212e-17
+      },
+      {
+        "name": "degenerate_projector",
+        "dimension": 4,
+        "copy_counts": [
+          1,
+          2
+        ],
+        "populations": [
+          0.507242523214103,
+          0.492757476785897
+        ],
+        "optimizer": [
+          0.20289700928564128,
+          0.7971029907143588
+        ],
+        "K_nats": 0.22778164890171868,
+        "max_modular_identity_error": 5.552096845871479e-17
+      },
+      {
+        "name": "pure_reward_eigenstate",
+        "dimension": 2,
+        "copy_counts": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "populations": [
+          1.0,
+          0.0
+        ],
+        "optimizer": [
+          0.30000000000000004,
+          0.7
+        ],
+        "K_nats": 1.203972804325936,
+        "max_modular_identity_error": 1.3891741162886355e-17
+      }
+    ],
+    "max_modular_quadrature_error": 3.3306690738754696e-16,
+    "max_periodic_average_error": 3.1294197000212803e-14,
+    "max_relative_entropy_identity_error": 1.3322676295501878e-15,
+    "finite_confidence_effect_threshold_checks": 560,
+    "positive_finite_confidence_bounds": 207,
+    "max_finite_confidence_violation": 0.0,
+    "shared_vs_independent_phase_matrix_separation": 0.01891394221478419
+  },
+  "qubit_example": {
+    "copies": 33,
+    "accept_at_most_successes": 26,
+    "exact_type_I": 0.0001620317343622446,
+    "exact_worst_type_II": 0.0010550610622857895,
+    "chernoff_type_I": 0.0017283691866852686,
+    "chernoff_worst_type_II": 0.00992502433495289,
+    "K_nats": 0.8303656034108254,
+    "pointwise_Umegaki_reconstruction": 1.1173300547617504,
+    "pointwise_alternative_coherence": 0.1279621616172504,
+    "pointwise_comparison_scope": "one-dimensional real-coherence numerical minimization; not a certified global optimization"
+  },
+  "limits": [
+    "Floating-point finite-dimensional checks, not interval arithmetic or a proof certificate.",
+    "No optimization over all collective POVMs or all alternative states is performed.",
+    "Finite checks do not establish asymptotic exponents, the all-block game theorem, or novelty.",
+    "No arbitrary-memory adaptive bandit regret, gate synthesis, hardware noise, or runtime advantage is verified."
+  ]
+}
