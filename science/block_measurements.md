@@ -40,7 +40,7 @@ Repeat this same block measurement independently on $`\ell`$ blocks. For one fix
 For a closed neighborhood of radius $`\zeta`$, compactness and lower semicontinuity imply
 
 ```math
-\inf_{\substack{\|x-a\|_1\leq\zeta\\b\in\mathcal B_M}}
+\inf_{\substack{\Vert x-a\Vert _1\leq\zeta\\b\in\mathcal B_M}}
  D(x\Vert b)\longrightarrow c_M
 \quad\text{as }\zeta\downarrow0.
 ```

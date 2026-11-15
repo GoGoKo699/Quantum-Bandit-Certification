@@ -28,7 +28,7 @@ The [certification theorem](certification.md) establishes this rate for arbitrar
 
 ## A finite-confidence test
 
-Let $`\widehat p_n`$ be the fraction of $`F`$-outcomes equal to one. Choose any threshold $`s`$ satisfying $`p<s<r`$, and accept the null exactly when $`\widehat p_n\le s`$. Standard binomial Chernoff bounds give
+Let $`\widehat p_n`$ be the fraction of $`F`$-outcomes equal to one. Choose any threshold $`s`$ satisfying $`p\lt s\lt r`$, and accept the null exactly when $`\widehat p_n\le s`$. Standard binomial Chernoff bounds give
 
 ```math
 \alpha_n\le \exp[-n\mathrm{kl}(s,p)],
@@ -69,7 +69,7 @@ Thus both errors are below one percent using $`33`$ supplied copies, one qubit r
 \left(\frac1{20}\right)^{33-j}.
 ```
 
-To approach the leading exponent $`K`$, use thresholds $`s_n=p+\delta_n`$ with $`\delta_n\downarrow0`$ and $`n\delta_n^2\to\infty`$, while keeping $`s_n<r`$. For instance, $`\delta_n=n^{-1/3}`$ works for all sufficiently large $`n`$. Hoeffding's bound makes the type-I error vanish, and continuity of $`\mathrm{kl}(s_n,r)`$ gives the type-II exponent $`K`$. The unrestricted converse proves that no collective test has a higher uniform exponent in this regime.
+To approach the leading exponent $`K`$, use thresholds $`s_n=p+\delta_n`$ with $`\delta_n\downarrow0`$ and $`n\delta_n^2\to\infty`$, while keeping $`s_n\lt r`$. For instance, $`\delta_n=n^{-1/3}`$ works for all sufficiently large $`n`$. Hoeffding's bound makes the type-I error vanish, and continuity of $`\mathrm{kl}(s_n,r)`$ gives the type-II exponent $`K`$. The unrestricted converse proves that no collective test has a higher uniform exponent in this regime.
 
 ## The physical alternative orbit
 
@@ -103,7 +103,7 @@ One common phase $`t`$ is drawn for the entire block in the converse witness:
 This shared-parameter mixture is generally not $`\tau_1^{\otimes n}`$. That distinction makes it possible to obstruct one test that must work against all IID alternatives, while retaining the original single-copy alternative family. The witness obeys the exact identity
 
 ```math
-D_{\rm M}(\rho^{\otimes n}\|\tau_n)=nK.
+D_{\rm M}(\rho^{\otimes n}\Vert \tau_n)=nK.
 ```
 
 For orientation, its single-copy off-diagonal entry is
@@ -122,7 +122,7 @@ For this same instance, [Ng, §§VI–VII](https://arxiv.org/html/2609.40339v1) 
 ```math
 D_{\rm inf}
 :=\inf_{\sigma:\mathrm{Tr}(\sigma F)\ge19/20}
-D(\rho\|\sigma)
+D(\rho\Vert \sigma)
 \simeq1.11733005>K.
 ```
 

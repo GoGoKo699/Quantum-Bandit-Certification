@@ -80,10 +80,10 @@ For $`\epsilon>0`$, use the strictly positive trial operator
 
 ```math
 X_\epsilon=
-W_n\oplus\epsilon I_{(\Gamma^{\otimes n})^\perp}.
+W_n\oplus\epsilon I_{\mathrm{out},n}.
 ```
 
-Because $`R_n`$ is supported on $`\Gamma^{\otimes n}`$,
+Here $`I_{\mathrm{out},n}`$ is the identity on the orthogonal complement of $`\Gamma^{\otimes n}`$. Because $`R_n`$ is supported on $`\Gamma^{\otimes n}`$,
 
 ```math
 \mathrm{Tr}(R_n\log X_\epsilon)

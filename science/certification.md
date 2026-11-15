@@ -178,7 +178,7 @@ where
 
 ```math
 \kappa(\zeta)=
-\inf_{\substack{x\in\Delta_L,\ \|x-p\|_1\leq\zeta\\q\in Q_r}}
+\inf_{\substack{x\in\Delta_L,\ \Vert x-p\Vert _1\leq\zeta\\q\in Q_r}}
       D(x\Vert q).
 ```
 
