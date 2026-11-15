@@ -13,10 +13,10 @@ Fix a finite-dimensional Hilbert space and a known effect
 where the eigenvalues are distinct and the spectral projections may be degenerate. Any bounded Hermitian reward can be put in this form by an affine change of scale. The reference state $`\rho`$ and threshold $`r`$ are known to the tester. Define
 
 ```math
-p_i=\operatorname{Tr}(\rho P_i),\qquad
-\mu=\operatorname{Tr}(\rho F),\qquad
-\Lambda_r=\{\sigma\geq0:\operatorname{Tr}\sigma=1,
-                        \operatorname{Tr}(\sigma F)\geq r\}.
+p_i=\mathrm{Tr}(\rho P_i),\qquad
+\mu=\mathrm{Tr}(\rho F),\qquad
+\Lambda_r=\{\sigma\geq0:\mathrm{Tr}\sigma=1,
+                        \mathrm{Tr}(\sigma F)\geq r\}.
 ```
 
 The nontrivial regime is $`\mu\lt r\lt f_{\max}`$. No rank assumption is imposed on $`\rho`$. The source supplies $`n`$ fresh independent copies of either the reference or one unknown fixed $`\sigma\in\Lambda_r`$. The source's preparation circuit, inverse and purifying environment are not supplied.
@@ -24,9 +24,9 @@ The nontrivial regime is $`\mu\lt r\lt f_{\max}`$. No rank assumption is imposed
 A tester returns one binary decision. Its effect $`T_n`$ accepts the reference, and
 
 ```math
-\alpha_n=1-\operatorname{Tr}(\rho^{\otimes n}T_n),\qquad
+\alpha_n=1-\mathrm{Tr}(\rho^{\otimes n}T_n),\qquad
 \beta_n=\sup_{\sigma\in\Lambda_r}
-               \operatorname{Tr}(\sigma^{\otimes n}T_n).
+               \mathrm{Tr}(\sigma^{\otimes n}T_n).
 ```
 
 The supremum requires a single test to handle the entire alternative set. The maximizing state may depend on the test and on $`n`$; within any experiment all copies come from the same state. A mixture of tensor powers is legitimate for proving a minimax lower bound because a test's acceptance probability is linear in the alternative density operator.
@@ -42,7 +42,7 @@ K=\min_{q\in Q_r}D(p\Vert q),
 D(p\Vert q)=\sum_{i:p_i>0}p_i\log\frac{p_i}{q_i}.
 ```
 
-Logarithms are natural, so rates are in nats per copy. Every feasible vector $`q`$ is realized by a state, for example $`\sum_iq_iP_i/\operatorname{rank}P_i`$. Measuring the spectral projectors of $`F`$ therefore produces exactly the classical composite experiment with null distribution $`p`$ and alternatives $`Q_r`$.
+Logarithms are natural, so rates are in nats per copy. Every feasible vector $`q`$ is realized by a state, for example $`\sum_iq_iP_i/\mathrm{rank}P_i`$. Measuring the spectral projectors of $`F`$ therefore produces exactly the classical composite experiment with null distribution $`p`$ and alternatives $`Q_r`$.
 
 The minimum exists and is finite and positive in the nontrivial regime. Its optimizer may put probability in eigenspaces with zero null population; the [support construction](certification.md#classical-optimizer-and-null-support) retains that probability explicitly. For projector rewards with null success probability $`p\lt r\lt1`$,
 
@@ -59,7 +59,7 @@ For $`0\lt\varepsilon\lt1`$, define
 ```math
 \beta_n^*(\varepsilon)=
 \inf_{\substack{0\leq T_n\leq I\\\alpha_n\leq\varepsilon}}
-\sup_{\sigma\in\Lambda_r}\operatorname{Tr}(\sigma^{\otimes n}T_n).
+\sup_{\sigma\in\Lambda_r}\mathrm{Tr}(\sigma^{\otimes n}T_n).
 ```
 
 Then
@@ -95,7 +95,7 @@ where the measurement inside $`D_M`$ may depend on the alternative. A larger val
 
 ## Mixture identities
 
-For $`C_n=\operatorname{conv}\{\sigma^{\otimes n}:\sigma\in\Lambda_r\}`$, the [modular-mixture construction](modular_mixtures.md) proves
+For $`C_n=\mathrm{conv}\{\sigma^{\otimes n}:\sigma\in\Lambda_r\}`$, the [modular-mixture construction](modular_mixtures.md) proves
 
 ```math
 \inf_{\eta\in C_n}D_M(\rho^{\otimes n}\Vert\eta)=nK.

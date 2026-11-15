@@ -4,7 +4,7 @@ The result concerns certification of one **known null state** against an unknown
 
 ## What the tester receives
 
-The tester has classical specifications of the finite-dimensional state $`\rho`$, the effect $`F`$, and the threshold $`r`$. It receives $`n`$ independent specimens from either $`\rho`$ or one fixed unknown state $`\sigma`$ satisfying $`\operatorname{Tr}(\sigma F)\ge r`$. The alternative can be chosen adversarially for the experiment, but the specimens conditional on that choice are IID. The theorem does not assume arbitrary correlated replacement sources.
+The tester has classical specifications of the finite-dimensional state $`\rho`$, the effect $`F`$, and the threshold $`r`$. It receives $`n`$ independent specimens from either $`\rho`$ or one fixed unknown state $`\sigma`$ satisfying $`\mathrm{Tr}(\sigma F)\ge r`$. The alternative can be chosen adversarially for the experiment, but the specimens conditional on that choice are IID. The theorem does not assume arbitrary correlated replacement sources.
 
 Knowing $`\rho`$ is substantive input. Estimating an unknown arm state, choosing a good arm, or propagating uncertainty in a learned null is a separate task. A dense classical description of $`\rho`$ or $`F`$ can itself require order $`d^2`$ numbers when the Hilbert-space dimension is $`d`$. The certification theorem supplies no efficient tomography procedure or compact representation for an arbitrary such description.
 
@@ -16,7 +16,7 @@ Write the known effect as
 
 ```math
 F=\sum_{i=1}^{L} f_iP_i,
-\qquad p_i=\operatorname{Tr}(\rho P_i).
+\qquad p_i=\mathrm{Tr}(\rho P_i).
 ```
 
 Measure the spectral PVM $`\{P_i\}_{i=1}^{L}`$ on every specimen and retain its outcome. A classical empirical-distribution test then attains the exponent $`K`$. The [worked example](examples.md) gives a finite-confidence binary test; the general asymptotic construction is in [certification.md](certification.md).

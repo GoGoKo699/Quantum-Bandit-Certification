@@ -21,8 +21,8 @@ Measuring $`F`$ spectrally on each copy proves $`V_m\geq K`$. Under an alternati
 Fix a POVM $`M=\{M_x\}_{x=1}^{B}`$ on $`m`$ copies. Remove zero effects and put
 
 ```math
-a_x=\operatorname{Tr}(M_x\rho^{\otimes m}),\qquad
-b_x(\sigma)=\operatorname{Tr}(M_x\sigma^{\otimes m}),
+a_x=\mathrm{Tr}(M_x\rho^{\otimes m}),\qquad
+b_x(\sigma)=\mathrm{Tr}(M_x\sigma^{\otimes m}),
 \qquad
 \mathcal B_M=\{b(\sigma):\sigma\in\Lambda_r\}.
 ```
@@ -40,7 +40,7 @@ Repeat this same block measurement independently on $`\ell`$ blocks. For one fix
 For a closed neighborhood of radius $`\zeta`$, compactness and lower semicontinuity imply
 
 ```math
-\inf_{\substack{\|x-a\|_1\leq\zeta\\b\in\mathcal B_M}}
+\inf_{\substack{\Vert x-a\Vert _1\leq\zeta\\b\in\mathcal B_M}}
  D(x\Vert b)\longrightarrow c_M
 \quad\text{as }\zeta\downarrow0.
 ```

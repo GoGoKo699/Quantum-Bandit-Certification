@@ -15,5 +15,9 @@ Result: At fixed finite dimension and an interior threshold above the null mean,
 - Attribution and closest-work comparison: references/RELATED_WORK.md
 - Structured bibliography: references/references.bib
 - Reproducible finite checks: verification/README.md
+- Learning overview: learning/README.md
+- Complete worked tutorial: learning/TUTORIAL.md
+- Selected Watrous2018 source bridge, notation and verified sections: learning/WATROUS_BRIDGE.md
+- Exactly30 project-intrinsic milestones (12 background,18 narrative): learning/MILESTONES.md
 
 Keep these distinctions: known-null certification versus unknown-arm learning; shared-phase mixtures of IID alternatives versus per-copy drift; max-min common measurement versus min-max pairwise measurement; a leading error exponent versus equal finite-sample risks. Read proof qualifiers before transferring a theorem to another model.

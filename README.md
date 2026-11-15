@@ -2,10 +2,10 @@
 
 **Can collective quantum measurements certify a source against every better-reward alternative more efficiently?** For a known reference state, a known reward observable and a fixed reward threshold, the optimal asymptotic confidence rate is exactly classical.
 
-Let $`F=\sum_i f_iP_i`$ be a known effect, $`\rho`$ a reference state, and $`\operatorname{Tr}(\rho F)\lt r\lt f_{\max}`$. An unknown source supplies independent copies of either $`\rho`$ or one fixed state $`\sigma`$ satisfying $`\operatorname{Tr}(\sigma F)\geq r`$. One test must work against every such alternative. Put
+Let $`F=\sum_i f_iP_i`$ be a known effect, $`\rho`$ a reference state, and $`\mathrm{Tr}(\rho F)\lt r\lt f_{\max}`$. An unknown source supplies independent copies of either $`\rho`$ or one fixed state $`\sigma`$ satisfying $`\mathrm{Tr}(\sigma F)\geq r`$. One test must work against every such alternative. Put
 
 ```math
-p_i=\operatorname{Tr}(\rho P_i),\qquad
+p_i=\mathrm{Tr}(\rho P_i),\qquad
 K=\min_{\substack{q\in\Delta_L\\\sum_iq_if_i\geq r}}D(p\Vert q).
 ```
 
@@ -38,6 +38,12 @@ Start with the [model and exact claims](science/model.md), then the [connected r
 | What is established by the numerical checks? | [Verification](verification/README.md) |
 
 The [LLM reading guide](llms.txt) maps the authoritative statements and proof routes.
+
+## Learn the project
+
+The educational anchor is **John Watrous, *The Theory of Quantum Information* (2018)**, using the author's standard-layout manuscript. The [Watrous bridge](learning/WATROUS_BRIDGE.md) identifies precise source sections, translates notation and logarithm units, and supplies the steps connecting textbook foundations to this certification problem.
+
+Start with the [worked tutorial](learning/TUTORIAL.md): one detector, a coherent reference qubit, a 33-copy certificate and the shared-phase obstruction to collective improvement. The [30-milestone map](learning/MILESTONES.md) connects 12 background milestones to 18 milestones developing the contribution. The [learning overview](learning/README.md) joins these routes without requiring a cover-to-cover textbook reading.
 
 ## Reproduce the finite checks
 
