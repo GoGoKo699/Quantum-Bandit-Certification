@@ -14,12 +14,12 @@ F=|0\rangle\langle0|,
 \qquad r=\frac{19}{20}.
 ```
 
-The null reward is $`p=\operatorname{Tr}(\rho F)=1/2`$. The alternative is any fixed qubit state $`\sigma`$ with $`\operatorname{Tr}(\sigma F)\ge19/20`$, supplied IID throughout the experiment. The tester knows the null; it is not asked to learn its Bloch direction from an uncharged training set.
+The null reward is $`p=\mathrm{Tr}(\rho F)=1/2`$. The alternative is any fixed qubit state $`\sigma`$ with $`\mathrm{Tr}(\sigma F)\ge19/20`$, supplied IID throughout the experiment. The tester knows the null; it is not asked to learn its Bloch direction from an uncharged training set.
 
 Measuring $`F`$ on each copy produces a Bernoulli sample with success probability $`p=1/2`$ under the null and some $`q\ge19/20`$ under every alternative. With natural logarithms, the exact leading certification exponent is
 
 ```math
-K=\operatorname{kl}\!\left(\frac12,\frac{19}{20}\right)
+K=\mathrm{kl}\!\left(\frac12,\frac{19}{20}\right)
 =\frac12\log\frac{100}{19}
 =0.830365603410825\ldots .
 ```
@@ -31,9 +31,9 @@ The [certification theorem](certification.md) establishes this rate for arbitrar
 Let $`\widehat p_n`$ be the fraction of $`F`$-outcomes equal to one. Choose any threshold $`s`$ satisfying $`p<s<r`$, and accept the null exactly when $`\widehat p_n\le s`$. Standard binomial Chernoff bounds give
 
 ```math
-\alpha_n\le \exp[-n\operatorname{kl}(s,p)],
+\alpha_n\le \exp[-n\mathrm{kl}(s,p)],
 \qquad
-\beta_n^{\rm worst}\le \exp[-n\operatorname{kl}(s,r)].
+\beta_n^{\rm worst}\le \exp[-n\mathrm{kl}(s,r)].
 ```
 
 Here $`\alpha_n`$ is the probability of rejecting the null when it is true. The second bound is uniform over all alternative states: their spectral success probabilities satisfy $`q\ge r`$, and the lower-tail probability decreases as $`q`$ increases. Coherence in $`\sigma`$ does not affect these outcome probabilities.
@@ -43,8 +43,8 @@ For specified targets $`\overline\alpha,\overline\beta\in(0,1)`$, the sufficient
 ```math
 n\ge
 \max\!\left\{
-\frac{\log(1/\overline\alpha)}{\operatorname{kl}(s,p)},
-\frac{\log(1/\overline\beta)}{\operatorname{kl}(s,r)}
+\frac{\log(1/\overline\alpha)}{\mathrm{kl}(s,p)},
+\frac{\log(1/\overline\beta)}{\mathrm{kl}(s,r)}
 \right\},
 ```
 
@@ -54,8 +54,8 @@ For example, take $`s=4/5`$ and $`n=33`$. Accepting the null means observing at 
 
 | Error | Guaranteed upper bound |
 | --- | --- |
-| Type I | $`e^{-33\operatorname{kl}(0.8,0.5)}<0.00173`$ |
-| Worst-case type II | $`e^{-33\operatorname{kl}(0.8,0.95)}<0.00993`$ |
+| Type I | $`e^{-33\mathrm{kl}(0.8,0.5)}<0.00173`$ |
+| Worst-case type II | $`e^{-33\mathrm{kl}(0.8,0.95)}<0.00993`$ |
 
 Thus both errors are below one percent using $`33`$ supplied copies, one qubit readout at a time, and one classical count. The guarantees are conservative. The exact risks of this particular test are the binomial tails
 
@@ -69,7 +69,7 @@ Thus both errors are below one percent using $`33`$ supplied copies, one qubit r
 \left(\frac1{20}\right)^{33-j}.
 ```
 
-To approach the leading exponent $`K`$, use thresholds $`s_n=p+\delta_n`$ with $`\delta_n\downarrow0`$ and $`n\delta_n^2\to\infty`$, while keeping $`s_n<r`$. For instance, $`\delta_n=n^{-1/3}`$ works for all sufficiently large $`n`$. Hoeffding's bound makes the type-I error vanish, and continuity of $`\operatorname{kl}(s_n,r)`$ gives the type-II exponent $`K`$. The unrestricted converse proves that no collective test has a higher uniform exponent in this regime.
+To approach the leading exponent $`K`$, use thresholds $`s_n=p+\delta_n`$ with $`\delta_n\downarrow0`$ and $`n\delta_n^2\to\infty`$, while keeping $`s_n<r`$. For instance, $`\delta_n=n^{-1/3}`$ works for all sufficiently large $`n`$. Hoeffding's bound makes the type-I error vanish, and continuity of $`\mathrm{kl}(s_n,r)`$ gives the type-II exponent $`K`$. The unrestricted converse proves that no collective test has a higher uniform exponent in this regime.
 
 ## The physical alternative orbit
 
@@ -121,7 +121,7 @@ For this same instance, [Ng, §§VI–VII](https://arxiv.org/html/2609.40339v1) 
 
 ```math
 D_{\rm inf}
-:=\inf_{\sigma:\operatorname{Tr}(\sigma F)\ge19/20}
+:=\inf_{\sigma:\mathrm{Tr}(\sigma F)\ge19/20}
 D(\rho\|\sigma)
 \simeq1.11733005>K.
 ```
@@ -146,6 +146,6 @@ The coherent and diagonal nulls have the same reward populations, but different 
 | $`(I+0.9X)/2`$ | $`(1/2,1/2)`$ | $`K=\tfrac12\log(100/19)`$ | Numerically $`\simeq1.11733005`$ |
 | $`I/2`$ | $`(1/2,1/2)`$ | $`K=\tfrac12\log(100/19)`$ | Exactly $`K`$ |
 
-For the diagonal null, $`\operatorname{diag}(19/20,1/20)`$ attains the last-column value, and spectral data processing proves its optimality. Coherence changes the pairwise quantum distance while leaving the solved uniform certification rate unchanged. This comparison concerns the full alternative halfspace; restricting the alternatives to a smaller known model can change the conclusion.
+For the diagonal null, $`\mathrm{diag}(19/20,1/20)`$ attains the last-column value, and spectral data processing proves its optimality. Coherence changes the pairwise quantum distance while leaving the solved uniform certification rate unchanged. This comparison concerns the full alternative halfspace; restricting the alternatives to a smaller known model can change the conclusion.
 
 The experiment needs no QRAM, inverse preparation, or coherent storage between copies. Its actual preparation, measurement, and classical-input costs are stated in [resources.md](resources.md). Pure-state and zero-population boundary cases are treated separately in [certification.md](certification.md).

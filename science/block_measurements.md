@@ -21,8 +21,8 @@ Measuring $`F`$ spectrally on each copy proves $`V_m\geq K`$. Under an alternati
 Fix a POVM $`M=\{M_x\}_{x=1}^{B}`$ on $`m`$ copies. Remove zero effects and put
 
 ```math
-a_x=\operatorname{Tr}(M_x\rho^{\otimes m}),\qquad
-b_x(\sigma)=\operatorname{Tr}(M_x\sigma^{\otimes m}),
+a_x=\mathrm{Tr}(M_x\rho^{\otimes m}),\qquad
+b_x(\sigma)=\mathrm{Tr}(M_x\sigma^{\otimes m}),
 \qquad
 \mathcal B_M=\{b(\sigma):\sigma\in\Lambda_r\}.
 ```

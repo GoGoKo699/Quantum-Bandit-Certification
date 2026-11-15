@@ -7,14 +7,14 @@ The certification theorem does not require a full-rank null state or positive we
 Let $`F=\sum_{i=1}^{L}f_iP_i`$ be the spectral decomposition of a fixed effect on a finite-dimensional Hilbert space, with distinct eigenvalues $`f_i`$. Let $`\rho`$ be any density operator and write
 
 ```math
-p_i=\operatorname{Tr}(\rho P_i),\qquad
+p_i=\mathrm{Tr}(\rho P_i),\qquad
 \mu=\sum_i p_i f_i,\qquad f_{\max}=\max_i f_i.
 ```
 
 For a threshold $`r`$, define the alternative set and its classical image by
 
 ```math
-\Lambda_r=\{\sigma:\operatorname{Tr}(\sigma F)\geq r\},\qquad
+\Lambda_r=\{\sigma:\mathrm{Tr}(\sigma F)\geq r\},\qquad
 Q_r=\{q\in\Delta_L:\textstyle\sum_iq_if_i\geq r\}.
 ```
 
@@ -30,9 +30,9 @@ All logarithms are natural. A positive numerator with zero denominator contribut
 For an acceptance effect $`0\leq T_n\leq I`$ for the null $`\rho^{\otimes n}`$, set
 
 ```math
-a_n=\operatorname{Tr}(\rho^{\otimes n}T_n),\qquad
+a_n=\mathrm{Tr}(\rho^{\otimes n}T_n),\qquad
 b_n=\sup_{\sigma\in\Lambda_r}
-       \operatorname{Tr}(\sigma^{\otimes n}T_n).
+       \mathrm{Tr}(\sigma^{\otimes n}T_n).
 ```
 
 For every fixed $`\varepsilon\in(0,1)`$, the optimal worst-case Type-II probability subject to $`a_n\geq1-\varepsilon`$ has exponent exactly $`K`$:
@@ -56,14 +56,14 @@ S=\{i:p_i>0\},\qquad
 \Omega_S=\sum_{i\in S}\frac{p_i}{q_i^*}P_i.
 ```
 
-The operator $`\Omega_S`$ is strictly positive on $`\Gamma\mathcal H`$. Since $`\rho\geq0`$, a zero value of $`\operatorname{Tr}(\rho P_i)`$ implies $`P_i\rho=\rho P_i=0`$. Hence $`\rho=\Gamma\rho\Gamma`$. Inverses below are taken only on $`\Gamma\mathcal H`$; no inverse of a zero endpoint weight is used.
+The operator $`\Omega_S`$ is strictly positive on $`\Gamma\mathcal H`$. Since $`\rho\geq0`$, a zero value of $`\mathrm{Tr}(\rho P_i)`$ implies $`P_i\rho=\rho P_i=0`$. Hence $`\rho=\Gamma\rho\Gamma`$. Inverses below are taken only on $`\Gamma\mathcal H`$; no inverse of a zero endpoint weight is used.
 
 Set
 
 ```math
 \chi=\Omega_S^{-1/2}\rho\Omega_S^{-1/2},\qquad
-s=\operatorname{Tr}\chi=\sum_{i\in S}q_i^*,\qquad
-\tau=\sum_{i\notin S}q_i^*\frac{P_i}{\operatorname{rank}P_i}.
+s=\mathrm{Tr}\chi=\sum_{i\in S}q_i^*,\qquad
+\tau=\sum_{i\notin S}q_i^*\frac{P_i}{\mathrm{rank}P_i}.
 ```
 
 The operators $`\chi`$ and $`\tau`$ have orthogonal supports and traces $`s`$ and $`1-s`$. The case $`\tau=0`$ is allowed. For real $`t`$, define the normalized state
@@ -87,7 +87,7 @@ Write $`R_n=\rho^{\otimes n}`$, $`W_n=\Omega_S^{\otimes n}`$, and let $`\mathcal
 The limit exists in finite dimension: each matrix entry is a finite sum of constant or oscillatory exponential terms. It lies in
 
 ```math
-C_n=\operatorname{conv}\{\sigma^{\otimes n}:\sigma\in\Lambda_r\}.
+C_n=\mathrm{conv}\{\sigma^{\otimes n}:\sigma\in\Lambda_r\}.
 ```
 
 Indeed every finite-time average lies in this compact convex hull, which is closed. The mixture has no offdiagonal block between $`\Gamma^{\otimes n}`$ and its orthogonal complement, because each $`\sigma_t`$ is already block diagonal. Its null-support block is
@@ -132,15 +132,15 @@ b_n\geq e^{-nc}
 To prove it, compress $`T_n`$ to the null-support block. Pinching gives
 
 ```math
-\operatorname{Tr}(\mathcal E_n(R_n)T_n)\geq a_n/v_n.
+\mathrm{Tr}(\mathcal E_n(R_n)T_n)\geq a_n/v_n.
 ```
 
 Let $`Q_n=\mathbf1\{\log W_n\leq nc\}`$. The operators $`Q_n`$, $`W_n`$, and $`\mathcal E_n(R_n)`$ commute. The contribution outside $`Q_n`$ is at most $`u_n(c)`$. On $`Q_n`$, the factor $`W_n^{-1}`$ is at least $`e^{-nc}`$. Since $`\eta_n`$ is a mixture of feasible alternatives,
 
 ```math
-b_n\geq\operatorname{Tr}(\eta_nT_n)
+b_n\geq\mathrm{Tr}(\eta_nT_n)
 \geq e^{-nc}\left[
-  \operatorname{Tr}(\mathcal E_n(R_n)T_n)-u_n(c)
+  \mathrm{Tr}(\mathcal E_n(R_n)T_n)-u_n(c)
 \right].
 ```
 
@@ -190,7 +190,7 @@ The first bound is a union of coordinate Hoeffding bounds; zero-weight coordinat
 | --- | --- |
 | $`r\leq\mu`$ | The null is an allowed alternative. At error threshold $`\varepsilon`$, the optimal worst-case Type-II probability is exactly $`1-\varepsilon`$, attained by $`T_n=(1-\varepsilon)I`$; the exponent is zero. |
 | $`\mu\lt r\lt f_{\max}`$ | The preceding theorem applies; $`0\lt K\lt\infty`$. |
-| $`\mu\lt r=f_{\max}`$ | Every alternative is supported in the top eigenspace. For $`P_{\max}`$ its projector and $`p_{\max}=\operatorname{Tr}(\rho P_{\max})\lt1`$, the test $`T_n=I-P_{\max}^{\otimes n}`$ has Type-II error zero and Type-I error $`p_{\max}^n`$. Thus the fixed-error exponent is infinity. |
+| $`\mu\lt r=f_{\max}`$ | Every alternative is supported in the top eigenspace. For $`P_{\max}`$ its projector and $`p_{\max}=\mathrm{Tr}(\rho P_{\max})\lt1`$, the test $`T_n=I-P_{\max}^{\otimes n}`$ has Type-II error zero and Type-I error $`p_{\max}^n`$. Thus the fixed-error exponent is infinity. |
 | $`r>f_{\max}`$ | The alternative set is empty; this is a vacuous testing problem, not a learning advantage. |
 | $`F=cI`$ | The alternatives include the null when $`r\leq c`$ and are empty when $`r>c`$; there is no nontrivial threshold regime. |
 

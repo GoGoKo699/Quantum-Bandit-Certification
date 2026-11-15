@@ -4,11 +4,11 @@ A mixture of IID alternatives can retain less distinguishability than any single
 
 ## Setting and inherited tools
 
-Use the notation of [certification](certification.md). The known effect is $`F=\sum_i f_iP_i`$, the null is an arbitrary state $`\rho`$, $`p_i=\operatorname{Tr}(\rho P_i)`$, and $`\mu=\operatorname{Tr}(\rho F)\lt r\lt f_{\max}`$. Set
+Use the notation of [certification](certification.md). The known effect is $`F=\sum_i f_iP_i`$, the null is an arbitrary state $`\rho`$, $`p_i=\mathrm{Tr}(\rho P_i)`$, and $`\mu=\mathrm{Tr}(\rho F)\lt r\lt f_{\max}`$. Set
 
 ```math
-\Lambda_r=\{\sigma:\operatorname{Tr}(\sigma F)\geq r\},\qquad
-C_n=\operatorname{conv}\{\sigma^{\otimes n}:\sigma\in\Lambda_r\},
+\Lambda_r=\{\sigma:\mathrm{Tr}(\sigma F)\geq r\},\qquad
+C_n=\mathrm{conv}\{\sigma^{\otimes n}:\sigma\in\Lambda_r\},
 ```
 
 and let $`q^*`$ be any optimizer of
@@ -37,10 +37,10 @@ The measured relative entropy optimizes classical relative entropy over finite-o
 
 ```math
 D_M(R\Vert Z)=
-\sup_{X>0}\{\operatorname{Tr}(R\log X)+1-\operatorname{Tr}(ZX)\}.
+\sup_{X>0}\{\mathrm{Tr}(R\log X)+1-\mathrm{Tr}(ZX)\}.
 ```
 
-The constant $`1`$ is fixed by $`\operatorname{Tr}R=1`$. The compression used below produces a subnormalized second operator, but does not change this constant. The existing general composite-IID regularization framework is due to [Berta–Brandão–Hirche](https://arxiv.org/abs/1709.07268); the contribution here is an explicit evaluation for the reward-half-space family, with finite-copy witnesses. The one-copy logarithmic-derivative witness is inherited from [Ng, Theorem 1](https://arxiv.org/abs/2609.40339).
+The constant $`1`$ is fixed by $`\mathrm{Tr}R=1`$. The compression used below produces a subnormalized second operator, but does not change this constant. The existing general composite-IID regularization framework is due to [Berta–Brandão–Hirche](https://arxiv.org/abs/1709.07268); the contribution here is an explicit evaluation for the reward-half-space family, with finite-copy witnesses. The one-copy logarithmic-derivative witness is inherited from [Ng, Theorem 1](https://arxiv.org/abs/2609.40339).
 
 ## Exact finite-copy identity
 
@@ -71,9 +71,9 @@ Consequently,
 Extend $`\Omega_S`$ to the full Hilbert space by $`\Omega=\Omega_S\oplus0`$. Then
 
 ```math
-\operatorname{Tr}(\sigma\Omega)\leq1\quad(\sigma\in\Lambda_r),
+\mathrm{Tr}(\sigma\Omega)\leq1\quad(\sigma\in\Lambda_r),
 \qquad
-\operatorname{Tr}(Z\Omega^{\otimes n})\leq1\quad(Z\in C_n).
+\mathrm{Tr}(Z\Omega^{\otimes n})\leq1\quad(Z\in C_n).
 ```
 
 For $`\epsilon>0`$, use the strictly positive trial operator
@@ -86,8 +86,8 @@ W_n\oplus\epsilon I_{(\Gamma^{\otimes n})^\perp}.
 Because $`R_n`$ is supported on $`\Gamma^{\otimes n}`$,
 
 ```math
-\operatorname{Tr}(R_n\log X_\epsilon)
-=\operatorname{Tr}(R_n\log W_n)=nK.
+\mathrm{Tr}(R_n\log X_\epsilon)
+=\mathrm{Tr}(R_n\log W_n)=nK.
 ```
 
 The variational formula yields $`D_M(R_n\Vert Z)\geq nK-\epsilon`$. Letting $`\epsilon\downarrow0`$ proves the lower bound for every $`Z\in C_n`$. This argument avoids taking an inverse or logarithm of the zero block of $`\Omega`$.
@@ -98,7 +98,7 @@ Define the positive operators
 
 ```math
 \chi=\Omega_S^{-1/2}\rho\Omega_S^{-1/2},\qquad
-B=\sum_{i\notin S}q_i^*\frac{P_i}{\operatorname{rank}P_i}.
+B=\sum_{i\notin S}q_i^*\frac{P_i}{\mathrm{rank}P_i}.
 ```
 
 Their traces sum to one, although $`\chi`$ alone need not have trace one. The states
@@ -150,11 +150,11 @@ Fix any full-space $`X>0`$ and write $`X_+=\Gamma^{\otimes n}X\Gamma^{\otimes n}
 \Gamma^{\otimes n}(\log X)\Gamma^{\otimes n}\leq\log X_+.
 ```
 
-The outside block of $`\zeta_n`$ is positive and the cross block vanishes. Therefore its contribution to $`-\operatorname{Tr}(\zeta_nX)`$ is nonpositive, and the full variational objective is bounded by
+The outside block of $`\zeta_n`$ is positive and the cross block vanishes. Therefore its contribution to $`-\mathrm{Tr}(\zeta_nX)`$ is nonpositive, and the full variational objective is bounded by
 
 ```math
-g(X_+)=\operatorname{Tr}(R_n\log X_+)+1-
-       \operatorname{Tr}(A_nX_+).
+g(X_+)=\mathrm{Tr}(R_n\log X_+)+1-
+       \mathrm{Tr}(A_nX_+).
 ```
 
 This is a concave differentiable function on positive definite active-space operators. The logarithmic derivative is self-adjoint for the Hilbert–Schmidt pairing, so
@@ -166,11 +166,11 @@ This is a concave differentiable function on positive definite active-space oper
 Consequently $`W_n`$ is a global maximizer. Moreover $`\mathcal L_{W_n}(W_n)=I`$, and hence
 
 ```math
-\operatorname{Tr}(A_nW_n)
-=\operatorname{Tr}\bigl(R_n\mathcal L_{W_n}(W_n)\bigr)=1.
+\mathrm{Tr}(A_nW_n)
+=\mathrm{Tr}\bigl(R_n\mathcal L_{W_n}(W_n)\bigr)=1.
 ```
 
-This trace equals one even when $`A_n`$ is subnormalized. It is not $`\operatorname{Tr}A_n`$. It follows that
+This trace equals one even when $`A_n`$ is subnormalized. It is not $`\mathrm{Tr}A_n`$. It follows that
 
 ```math
 g(W_n)=nK+1-1=nK.
@@ -201,7 +201,7 @@ Let $`\mathcal E_n`$ pinch into the eigenspaces of $`W_n`$. The active block of 
 =W_n^{-1}\mathcal E_n(R_n).
 ```
 
-The other blocks are null-orthogonal. Pinching ensures $`\operatorname{supp}R_n\subseteq\operatorname{supp}\mathcal E_n(R_n)`$, and the two operators $`W_n`$ and $`\mathcal E_n(R_n)`$ commute. Thus, on the support entering the relative entropy,
+The other blocks are null-orthogonal. Pinching ensures $`\mathrm{supp}R_n\subseteq\mathrm{supp}\mathcal E_n(R_n)`$, and the two operators $`W_n`$ and $`\mathcal E_n(R_n)`$ commute. Thus, on the support entering the relative entropy,
 
 ```math
 \log\eta_n=\log\mathcal E_n(R_n)-\log W_n.
