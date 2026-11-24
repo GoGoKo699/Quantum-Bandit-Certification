@@ -124,7 +124,7 @@ Measure $`\{P_\ell\}`$ on each fresh copy and record the eigenvalue. These bound
 ```math
 \sup_{q\in\Delta_L}
 \left\{\sum_\ell q_\ell f_\ell:
- n_iD(\widehat p_i\Vert q)\leq\ln t+\ln\ln tight\}.
+ n_iD(\widehat p_i\Vert q)\leq\ln t+\ln\ln t\right\}.
 ```
 
 This is [empirical KL-UCB](https://doi.org/10.1214/13-AOS1119), applied to spectral outcomes as in [Ng](https://arxiv.org/abs/2609.40339). In the index optimization, any mass on a non-top outcome absent from the current sample may be moved to the top outcome. This leaves the divergence on the observed outcomes unchanged and can only increase the candidate mean. Thus the full-alphabet index agrees with the standard optimization over the empirical support and the known top outcome. Its upper bound is $`\limsup_T\mathbb E N_i(T)/\ln T\leq1/K_i`$ for each suboptimal arm. The classical proof compares each such arm against an optimal arm and permits ties among optimal arms. A positive affine rescaling of a nonconstant spectrum can put all rewards in $`[1/2,1]`$ if the chosen classical guarantee assumes strictly positive means. The rescaling keeps the feasible spectral distributions and $`K_i`$ unchanged.
