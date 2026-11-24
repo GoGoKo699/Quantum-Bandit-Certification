@@ -3,7 +3,7 @@
 
 Run from any directory. Results are written beside this script. These checks
 exercise numerical identities and boundary constructions; they do not prove
-the all-block optimization or asymptotic certification theorem.
+the universal certification and regret theorems.
 """
 
 from __future__ import annotations
@@ -22,6 +22,8 @@ import scipy
 from scipy.integrate import quad_vec
 from scipy.optimize import brentq, minimize, minimize_scalar
 from scipy.stats import binom
+
+from check_adaptive_qubit import check_adaptive_qubit_example, check_stopped_two_arm_example
 
 
 SEED = 20261115
@@ -456,22 +458,28 @@ def main() -> None:
     classical = check_classical()
     constructions = check_constructions(build_cases())
     example = check_qubit_example()
+    adaptive_qubit = check_adaptive_qubit_example()
+    stopped_two_arm = check_stopped_two_arm_example()
     script = Path(__file__).resolve()
+    adaptive_script = script.with_name("check_adaptive_qubit.py")
     results = {
         "status": "passed",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "script_sha256": hashlib.sha256(script.read_bytes()).hexdigest(),
+        "adaptive_script_sha256": hashlib.sha256(adaptive_script.read_bytes()).hexdigest(),
         "seed": SEED,
         "versions": {"python": platform.python_version(), "numpy": np.__version__, "scipy": scipy.__version__},
         "tolerances": {"matrix_identity_absolute": IDENTITY_TOL, "relative_entropy_absolute": ENTROPY_TOL},
         "classical_optimization": classical,
         "quantum_constructions": constructions,
         "qubit_example": example,
+        "adaptive_qubit": adaptive_qubit,
+        "stopped_two_arm": stopped_two_arm,
         "limits": [
-            "Floating-point finite-dimensional checks, not interval arithmetic or a proof certificate.",
+            "The original matrix and certification checks are finite-dimensional floating-point diagnostics.",
             "No optimization over all collective POVMs or all alternative states is performed.",
-            "Finite checks do not establish asymptotic exponents, the all-block game theorem, or novelty.",
-            "No arbitrary-memory adaptive bandit regret, gate synthesis, hardware noise, or runtime advantage is verified.",
+            "The adaptive-qubit and stopped-effect checks use exact rational arithmetic for the stated examples.",
+            "The analytical arguments establish the asymptotic certification, finite-block and arbitrary-memory regret theorems.",
         ],
     }
     destination = script.with_name("results.json")

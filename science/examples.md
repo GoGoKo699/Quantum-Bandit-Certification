@@ -54,8 +54,8 @@ For example, take $`s=4/5`$ and $`n=33`$. Accepting the null means observing at 
 
 | Error | Guaranteed upper bound |
 | --- | --- |
-| Type I | $`e^{-33\mathrm{kl}(0.8,0.5)}<0.00173`$ |
-| Worst-case type II | $`e^{-33\mathrm{kl}(0.8,0.95)}<0.00993`$ |
+| Type I | $`e^{-33\mathrm{kl}(0.8,0.5)}\lt 0.00173`$ |
+| Worst-case type II | $`e^{-33\mathrm{kl}(0.8,0.95)}\lt 0.00993`$ |
 
 Thus both errors are below one percent using $`33`$ supplied copies, one qubit readout at a time, and one classical count. The guarantees are conservative. The exact risks of this particular test are the binomial tails
 
@@ -90,7 +90,7 @@ The [modular-mixture construction](modular_mixtures.md) uses the genuine alterna
 \end{pmatrix}.
 ```
 
-Every member has reward exactly $`19/20`$. Its phase varies, while its diagonal populations and the magnitude of its coherence remain fixed. Positivity follows directly from the congruence construction. Explicitly, its determinant is $`361/40000>0`$.
+Every member has reward exactly $`19/20`$. Its phase varies, while its diagonal populations and the magnitude of its coherence remain fixed. Positivity follows directly from the congruence construction. Explicitly, its determinant is $`361/40000\gt 0`$.
 
 One common phase $`t`$ is drawn for the entire block in the converse witness:
 
@@ -123,7 +123,7 @@ For this same instance, [Ng, §§VI–VII](https://arxiv.org/html/2609.40339v1) 
 D_{\rm inf}
 :=\inf_{\sigma:\mathrm{Tr}(\sigma F)\ge19/20}
 D(\rho\Vert \sigma)
-\simeq1.11733005>K.
+\simeq1.11733005\gt K.
 ```
 
 This is a numerical comparison, not an exact closed-form evaluation used by the proof. The larger value means that every individual fixed alternative has a larger asymptotically accessible pairwise information distance after optimizing the quantum test for that alternative. It does not supply one measurement that works at that rate against the whole halfspace.
@@ -149,3 +149,62 @@ The coherent and diagonal nulls have the same reward populations, but different 
 For the diagonal null, $`\mathrm{diag}(19/20,1/20)`$ attains the last-column value, and spectral data processing proves its optimality. Coherence changes the pairwise quantum distance while leaving the solved uniform certification rate unchanged. This comparison concerns the full alternative halfspace; restricting the alternatives to a smaller known model can change the conclusion.
 
 The experiment needs no QRAM, inverse preparation, or coherent storage between copies. Its actual preparation, measurement, and classical-input costs are stated in [resources.md](resources.md). Pure-state and zero-population boundary cases are treated separately in [certification.md](certification.md).
+
+## A qubit bandit with a strict converse improvement
+
+Use the projector reward $`F=|0\rangle\langle0|`$. Arm 1 supplies
+$`\rho=|+\rangle\langle+|`$ and arm 2 supplies
+$`\mathrm{diag}(19/20,1/20)`$. Their means are $`1/2`$ and
+$`19/20`$, so the regret per pull of arm 1 is $`9/20`$. Spectral readout
+gives
+
+```math
+K_{\inf}=\tfrac12\log(100/19)=0.8303656\ldots.
+```
+
+The new converse and spectral KL-UCB give the optimal logarithmic regret
+coefficient $`(9/20)/K_{\inf}=0.54193\ldots`$. The earlier quantum-memory
+converse gives a coefficient between $`0.3551`$ and $`0.3566`$.
+
+To see the difference, minimize $`D(\rho\Vert\sigma)`$ over replacements
+with reward at least $`19/20`$. Mixing any state of strictly greater
+reward with $`\rho`$ to reach the boundary cannot increase this divergence,
+by convexity in $`\sigma`$. At the boundary, for fixed magnitude of the
+off-diagonal entry, a nonnegative real entry minimizes the divergence. This
+follows from the spectral form of $`\log \sigma`$ and the positive real
+coherence of $`\rho`$. Thus write
+$`\sigma=(I+xX+(9/10)Z)/2`$, where $`0\le x\lt \sqrt{19}/10`$. The rank-one
+endpoint has infinite divergence because its support differs from that of
+$`\rho`$. With $`s=\sqrt{x^2+(9/10)^2}`$, the objective becomes
+
+```math
+f(x)=\log 2-\tfrac12\log(1-s^2)
+     -\frac{x}{s}\mathrm{atanh}(s).
+```
+
+For $`x_0=7/25`$, rational series bounds give
+$`1.266602\lt f(x_0)\lt 1.266604`$ and $`0.015306\lt f'(x_0)\lt 0.015308`$.
+The tangent inequality for the convex function $`f`$ gives
+$`f(x)\ge f(x_0)-x_0f'(x_0)\gt 1.262`$ throughout the feasible interval.
+Together with the trial value $`f(x_0)\lt 1.267`$, this yields
+$`1.262\lt D_{\inf}\lt 1.267`$. Continuity at full-rank boundary states identifies
+the infimum over strictly better alternatives with the boundary minimum.
+The explicit interval quantifies how much the pairwise Umegaki converse leaves
+open in this example.
+
+## Three-round stopped measurement
+
+Consider a policy that pulls arm 1 once, then arm 2 once. It measures the
+symmetric-versus-antisymmetric SWAP observable on the stored pair. The third
+pull is arm 2 for the symmetric outcome and arm 1 otherwise. The event
+$`N_1(3)\leq1`$ is the symmetric outcome, determined before the third
+specimen arrives.
+
+If arm 2 supplies $`\tau`$, the effect on the first arm alone is
+$`(I+\tau)/2`$. For any arm 1 state $`\sigma`$, its acceptance
+probability is $`(1+\mathrm{Tr}(\sigma\tau))/2`$. This follows
+by tracing the fixed second-arm register out of the symmetric effect
+$`(I+\mathrm{SWAP})/2`$. The [verification check](../verification/check_adaptive_qubit.py)
+evaluates both probabilities in rational arithmetic for a pair of
+noncommuting qubit states. The general [cutoff reduction](adaptive_regret.md#1-a-cutoff-event-is-a-measurement-on-a-fixed-number-of-copies)
+works even when the later pull decisions depend on several earlier measurements.

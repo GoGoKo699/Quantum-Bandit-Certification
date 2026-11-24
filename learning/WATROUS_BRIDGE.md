@@ -1,10 +1,10 @@
-# From Watrous to quantum bandit certification
+# From Watrous to quantum bandit certification and regret
 
 The educational anchor is **John Watrous, *The Theory of Quantum Information* (2018), the author's standard-layout manuscript**. Use the [author's book page](https://jhwatrous.github.io/books-and-courses.html) and its [standard-layout copy](https://jhwatrous.github.io/TQI.pdf). Page numbers below are the numbers printed in that manuscript. The linked book remains with its author; this repository supplies its own explanations and research proofs.
 
 Start with the [complete qubit experiment](../science/examples.md). A source sends qubits. The reference is known, and the alternative may be any fixed state whose reward is higher. Separate reward readouts certify the source using one count. The central question is whether retaining the qubits and measuring them together improves the leading confidence rate.
 
-Keep the two error probabilities visible: Type I rejects the reference when it is true; Type II accepts the reference when a better-reward alternative is true. The theorem controls the worst Type-II probability over the whole alternative family, with one common test. The book provides the language for this experiment; the project develops its specific many-copy answer.
+Keep the two error probabilities visible: Type I rejects the reference when it is true; Type II accepts the reference when a better-reward alternative is true. One common test controls the worst Type-II probability across the whole alternative family. The adaptive bandit result uses that fixed-sample theorem to bound an event in a different experiment, where the learner must choose among unknown sources.
 
 ## A selective reading route
 
@@ -19,6 +19,7 @@ Read the relevant passages when the corresponding object enters the story. The [
 | §§5.1.1–5.1.2, pp.250–264. | Understand classical relative entropy and why processing an outcome record cannot increase its information. | [Spectral rate](../science/model.md#the-classical-quantity) and [matching frequency test](../science/certification.md#matching-spectral-test) |
 | §§5.2.1–5.2.3, pp.265–282; Theorem5.35, p.280. | Read quantum relative entropy, its support condition and its decrease under a channel, including measurement. | [Two mixture divergences](../science/modular_mixtures.md) |
 | §4.1.1, Definition4.4, p.203, and Proposition4.6, p.204. | View pinching as removing coherence between specified blocks by averaging unitary phases or forgetting a projective measurement record. | [Feasible pinched mixture](../science/certification.md#a-feasible-mixture-on-every-tensor-power) |
+| §§2.2–2.3 and §1.2. | Use a fixed quantum apparatus to represent an event by a single effect, and compactness to choose finitely many positive operator comparisons. | [Adaptive regret](../science/adaptive_regret.md) |
 
 The probability bounds, empirical-type argument and variational log-derivative calculation needed after these passages are supplied in the project files. They are not left as unstated prerequisites.
 
@@ -62,11 +63,17 @@ The book's pinching definition makes the second construction recognizable. The p
 
 Finally, fix a finite collective block measurement and repeat it. If its worst-case KL information per copy exceeded $`K`$, a classical frequency test on repeated block outcomes would violate the certification theorem. This proves the [fixed-block equality](../science/block_measurements.md). The argument does not replace a mixture's KL divergence with that of one component or exchange the order of the optimizations.
 
+## Apply the fixed-sample bound to an adaptive policy
+
+The bandit arms supply copies of unknown states, one copy for each classical arm request. The policy may choose the next request using an instrument on all stored quantum systems. Fix an arm and a cutoff $`m`$. The experiment that runs the policy but rejects when it requests specimen $`m+1`$ of that arm is a binary test on the $`m`$ specimens. Fixed registers for the remaining arms and the policy's workspace are part of the apparatus. This step uses the textbook measurement rule and channel composition to represent the cutoff event by one effect.
+
+Pointwise consistency constrains the policy on any fixed replacement instance for which the modified arm is strictly best. Mixing each member of the higher-reward phase family with a small maximally mixed component keeps the replacement strictly better and makes positive operator comparisons stable. A fixed finite cover then transfers the probability bounds from finitely many such instances to the phase average, with an arbitrarily small exponent loss per copy. The pinching bound forces the required logarithmic pulls. The [adaptive regret proof](../science/adaptive_regret.md) develops this use of the phase witness and its matching leading coefficient.
+
 ## What is supplied by which source
 
 Watrous supplies the selected educational foundation: states, measurements, discrimination language, relative entropy and pinching channels. The research literature supplies additional tools and the earlier single-copy spectral collapse; [Related work](../references/RELATED_WORK.md) records those attributions. In particular the measured-relative-entropy variational formula and the modular logarithm-derivative representation are research-level proof ingredients explained in [Modular mixtures](../science/modular_mixtures.md).
 
-The project's added conclusions are the support-complete many-copy construction, exact mixture measured divergence, uniform collective certification rate with strong converse, and every-fixed-block information value. A known-pair discrimination theorem or quantum relative-entropy data processing alone does not establish these conclusions.
+The project's added conclusions are the support-complete many-copy construction, the exact mixture divergences, the uniform certification rate and its strong converse, the fixed-block information value, and the adaptive quantum-memory regret converse. The matching spectral KL-UCB policy and the states-as-arms model come from Ng and the classical bandit literature.
 
 ## Continue through the project
 
@@ -77,8 +84,9 @@ Use [M01–M12](MILESTONES.md) to connect individual specimens, outcomes, inform
 | M13–M17 | Begin with the coherent qubit, find the closest populations, complete missing support and keep one shared phase across the batch. |
 | M18–M20 | Connect the logarithm derivative, common lower witness and stationarity into the exact measured-divergence identity. |
 | M21–M25 | Switch to the pinched mixture, control sectors and likelihood tails, match the strong converse with a spectral test, and evaluate the regularized quantum expression. |
-| M26–M30 | Transfer the rate by block repetition, retain endpoints and resource costs, and explain the learning consequence with its adaptive-policy boundary. |
+| M26–M27 | Transfer the certification rate by block repetition and identify the threshold and error endpoints. |
+| M28–M30 | Test a cutoff on the number of pulls, control the phase family using a fixed finite cover, and derive the optimal logarithmic regret. |
 
-The final synthesis should keep the same scope as the [model](../science/model.md): a known reference, fixed finite dimension and threshold, one common unknown IID alternative, and a fixed Type-I tolerance in $`(0,1)`$ for the matched fixed-error rate.
+The fixed-sample theorem uses a known reference, a fixed finite dimension and threshold, an unknown fixed IID alternative, and a positive Type-I tolerance. The bandit result uses unknown fixed IID arms, a known reward effect, classical arm requests, and pointwise consistency. Each result fixes the instance before its asymptotic limit.
 
-Return to the [33-copy qubit experiment](../science/examples.md#a-finite-confidence-test) after the proof to see an actual count, decision and pair of guaranteed error probabilities. The [resource account](../science/resources.md) prices supplied copies, readout and storage. The [interpretation](../science/interpretation.md#the-learning-conclusion-and-its-boundary) explains why this certification result does not yet determine the regret of an unrestricted adaptive quantum-memory bandit learner.
+Return to the [33-copy qubit experiment](../science/examples.md#a-finite-confidence-test) for a count with explicit error guarantees. The [adaptive theorem](../science/adaptive_regret.md) gives the corresponding exploration requirement in the unknown-arm setting. The [resource account](../science/resources.md) prices supplied copies, readout, and storage.

@@ -1,6 +1,6 @@
 # Uniform certification and finite-confidence bounds
 
-The certification theorem does not require a full-rank null state or positive weight in every eigenspace of the reward. This chapter proves the uniform certification theorem, including its finite-confidence bounds and endpoint cases. It concerns fixed-sample certification and finite measurement blocks; it does not assert an optimal regret coefficient for unrestricted adaptive quantum-memory policies.
+The certification theorem does not require a full-rank null state or positive weight in every eigenspace of the reward. This chapter proves the uniform certification theorem, including its finite-confidence bounds and endpoint cases. The [adaptive regret proof](adaptive_regret.md) uses the finite-confidence inequality below after reducing an under-sampling event to a fixed-copy effect.
 
 ## Model and statement
 

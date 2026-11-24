@@ -1,14 +1,15 @@
 # Quantum Bandit Certification
 
-Question: Can collective quantum measurements improve uniform certification of a known reference state against all fixed IID sources above a reward threshold?
+Question: Can collective quantum measurements improve uniform reward certification or lower the leading logarithmic regret of a states-as-arms bandit?
 
-Result: At fixed finite dimension and an interior threshold above the null mean, every reference state has the classical spectral KL exponent at each fixed Type-I tolerance in (0,1), with a strong converse. Every finite measurement-block game has the same value. Unrestricted adaptive-memory bandit regret is not solved.
+Result: At fixed finite dimension and an interior threshold above the null mean, every reference state has the classical spectral KL exponent at each fixed Type-I tolerance in (0,1), with a strong converse. Every finite measurement-block game has the same value. For fixed unknown state arms with a known common reward, classical arm choices and interior best mean, spectral KL-UCB attains the optimal leading regret over all pointwise-consistent policies with arbitrary quantum memory.
 
 - Model, exact assumptions and claims: science/model.md
 - Complete support-aware certification proof and endpoints: science/certification.md
 - Exact measured-divergence witness and regularized mixture entropy: science/modular_mixtures.md
 - Fixed-block common-measurement theorem and repetition proof: science/block_measurements.md
-- Complete qubit story and finite-copy test: science/examples.md
+- Adaptive regret theorem, stopped effect, finite cover and pinching: science/adaptive_regret.md
+- Fixed-copy and two-arm qubit examples: science/examples.md
 - Scientific meaning and limits for learning: science/interpretation.md
 - Copies, coherent memory, controls, state descriptions and output: science/resources.md
 - Connected scientific route: science/README.md

@@ -7,7 +7,7 @@ python3 -m pip install -r verification/requirements.txt
 python3 verification/check_science.py
 ```
 
-The script uses a fixed random seed and writes [results.json](results.json), including its own SHA-256 hash, actual package versions, numerical errors, and the precise scope of the checks. Assertions stop execution when a claimed identity or inequality fails; a failed run does not overwrite the preceding successful result file.
+The script uses a fixed random seed and writes [results.json](results.json), including both verification scripts' SHA-256 hashes, actual package versions, numerical errors, and the precise scope of the checks. Assertions stop execution when a claimed identity or inequality fails; a failed run does not overwrite the preceding successful result file.
 
 ## What is checked
 
@@ -23,6 +23,8 @@ The script uses a fixed random seed and writes [results.json](results.json), inc
 
 The quantum cases use one through four copies where the dimensions remain small. The qubit example's reported pointwise Umegaki comparator is also reconstructed by a scalar numerical minimization over real coherence. That reconstruction is not a certified global optimization and is not needed by the certification proof.
 
-## What the checks do not establish
+## Adaptive regret checks
 
-These are floating-point diagnostics of selected finite cases. They are not interval-certified arithmetic, optimization over all POVMs, exhaustive alternative-state searches, universal proof verification, or a priority certificate. The written arguments in the scientific account establish the asymptotic certification rate and the finite-block max–min result. The suite does not establish a hardware implementation, robustness to a fixed physical noise rate, a runtime advantage, or an optimal regret coefficient for arbitrary adaptive quantum-memory policies.
+[The rational checks](check_adaptive_qubit.py) enclose the two divergences in the [pure-qubit bandit](../science/examples.md#a-qubit-bandit-with-a-strict-converse-improvement) using explicit series remainders and a convex tangent. They also compare the joint SWAP measurement probability with the effective one-arm probability in the [three-round stopped example](../science/examples.md#three-round-stopped-measurement). Both calculations use exact rational arithmetic until displaying decimals.
+
+The written arguments establish the universal [certification](../science/certification.md), [block measurement](../science/block_measurements.md) and [adaptive regret](../science/adaptive_regret.md) results. The calculations here exercise finite examples and selected proof identities.

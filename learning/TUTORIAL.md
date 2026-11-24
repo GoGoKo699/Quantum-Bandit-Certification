@@ -1,10 +1,10 @@
-# When coherent specimens do not improve a uniform certificate
+# From a 33-qubit certificate to optimal bandit regret
 
 Suppose a laboratory source is promised to be one of two things. It is either a known reference source, or it is an unknown source whose mean reward is much higher. A measurement can inspect the specimens one at a time. A quantum apparatus could instead keep them and perform one joint measurement. The question is whether the second apparatus can make its error decrease faster as more specimens arrive.
 
 The answer for the full better-reward family is exact: separate spectral readout already has the optimal leading confidence rate. Understanding why requires keeping **one common test against a whole family** separate from a test designed for one known pair of states.
 
-This explanation follows the settled [30-milestone map](MILESTONES.md). M01–M12 assemble the task's foundations; M13–M30 develop the example, two shared-phase witnesses, matched certificate, and learning boundary. The sole educational anchor is Watrous, *The Theory of Quantum Information* (2018), using the author's standard-layout manuscript. The [source bridge](WATROUS_BRIDGE.md) identifies the relevant passages and separates those foundations from the research ingredients supplied here.
+This explanation follows the settled [30-milestone map](MILESTONES.md). M01–M12 assemble the task's foundations; M13–M30 develop the example, two shared-phase witnesses, matched certificate, and adaptive regret theorem. The sole educational anchor is Watrous, *The Theory of Quantum Information* (2018), using the author's standard-layout manuscript. The [source bridge](WATROUS_BRIDGE.md) identifies the relevant passages and separates those foundations from the research ingredients supplied here.
 
 ## One detector and a complete qubit experiment
 
@@ -162,12 +162,33 @@ Suppose a joint measurement on a fixed block of $`m`$ copies had worst-case clas
 
 Thus every finite block has optimal common-measurement value $`K`$. This is a repetition argument, not an exchange of the measurement and alternative optimizations. Divergence to a mixture can be smaller than divergence to every component, so the exact mixture identity alone would not justify that exchange. M26 and [Block measurements](../science/block_measurements.md) preserve this distinction.
 
-## What this establishes about learning
+## From a certificate to a pull-count bound
 
-The known-reference certificate is a component of the states-as-arms quantum bandit problem. The result establishes its optimal uniform rate and the value of every fixed finite measurement block. An unknown-arm learner with adaptive allocations, stopping times, and retained quantum memory asks a further question. The present fixed-sample theorem does not by itself determine that learner's optimal regret coefficient.
+Now let several unknown sources act as bandit arms. At each round the learner names one arm and receives a fresh copy of its state. The known effect $`F`$ assigns the arm its mean reward. The learner may keep specimens and jointly measure its register before choosing later arms. The question is how often a consistent learner must sample a suboptimal arm over $`T`$ rounds.
 
-Its statistical scope also matters. The alternative family is the full reward halfspace. A smaller calibrated family can permit different measurements and different gains. The theorem uses a fixed positive Type-I tolerance; demanding exactly zero Type-I error is a different constraint. Thresholds that include the null or reach the reward's maximal eigenspace have their own [endpoint conclusions](../science/certification.md#endpoint-cases).
+Focus on one suboptimal arm. The event of sampling it at most $`m`$ times can be tested with only $`m`$ copies of that arm. Run the policy in a simulator with a supply of $`m`$ copies and reject if it requests one more. Accept if the simulation runs through round $`T`$ without exceeding the supply. The other arms have the same states in both experiments, so their registers and the policy's memory can be included in the test apparatus. This gives one measurement effect on the $`m`$ copies.
 
-Separate readout attains the rate with supplied specimens and classical counts. Preparing those specimens and measuring a generic dense reward may still be expensive. Equality of leading rates does not establish equal finite risks, runtime, energy, or robustness to fixed hardware error. M28–M30 connect these costs and limits to the [resource account](../science/resources.md) and [scientific interpretation](../science/interpretation.md).
+Replace the selected arm with a state that makes it strictly best. A policy that still samples it at most $`m`$ times forgoes a positive reward gap on at least $`T-m`$ rounds. Small expected regret on that replacement instance therefore forces the probability of accepting the test to be small.
 
-Watrous supplies the language of states, measurements, discrimination, relative entropy, and pinching. The logarithmic-derivative variational tools and the earlier single-copy collapse come from the attributed research literature. The support-complete shared-phase constructions, matched collective certificate, and finite-block consequence are developed in the project's scientific account. The [source bridge](WATROUS_BRIDGE.md) gives precise reading locations and keeps these roles distinct.
+## Why finitely many alternative arms suffice
+
+In the certification proof, the test has to perform uniformly over the whole phase family. In a bandit, consistency only gives a guarantee for each fixed instance as the horizon grows. To connect these two statements, first choose a reward threshold strictly above the original best mean. Add a small amount of the maximally mixed state to each member of the phase family. The smoothed states still clear the original best mean, and every eigenvalue has a common positive lower bound.
+
+This eigenvalue floor turns closeness in operator norm into a multiplicative comparison. For any chosen $`\xi>0`$, continuity and compactness give a fixed finite set of representatives such that each smoothed state is bounded above by $`e^\xi`$ times one representative in the positive-semidefinite order. On $`m`$ copies the cost is $`e^{m\xi}`$. Removing the smoothing costs a second factor that can also be made arbitrarily small on the exponential scale. The representatives stay fixed as the horizon changes, so the proof can use consistency on this finite set.
+
+Combine the resulting upper bound on acceptance across the phase family with the pinched-mixture bound from certification. If the cutoff $`m`$ is below $`\log T/K_i`$ by a fixed fraction, the null probability of sampling the arm so few times goes to zero at a polynomial rate in $`T`$. Here $`K_i`$ is the same reverse-KL minimization used above, with the arm's spectral populations as the null and the best mean as the reward threshold. The full proof and the almost-sure conclusion for anytime policies are in [Adaptive regret](../science/adaptive_regret.md). M28–M30 follow these steps.
+
+## Read the regret coefficient in a qubit example
+
+Keep the projector reward and compare a pure $`|+\rangle`$ arm of mean $`0.5`$ with a best arm of mean $`0.95`$. The suboptimal arm still has reward populations $`(0.5,0.5)`$, so $`K_i=0.8303656034\ldots`$. The gap is $`0.45`$. The optimal expected regret in this two-arm example has the leading form
+
+```math
+R_T=(0.5419299621\ldots)\log T+o(\log T),
+\qquad 0.5419299621\ldots=\frac{0.45}{0.8303656034\ldots}.
+```
+
+The pairwise Umegaki half-space minimum is strictly larger in this example and yields a weaker regret lower bound. The [worked examples](../science/examples.md) give the comparison. Spectral reward measurement followed by classical KL-UCB attains the optimal coefficient.
+
+Both results count supplied specimens. For bandit regret, a pull produces one fresh copy, and the arm requests are classical. The comparison fixes the instance and its reward effect before the horizon grows. The [resource account](../science/resources.md) discusses the separate costs of readout, storage, and implementation.
+
+The [source bridge](WATROUS_BRIDGE.md) connects these arguments to Watrous's states, channels, measurements, relative entropy, and pinching. The [related-work account](../references/RELATED_WORK.md) credits Ng's bandit model and single-copy result, the classical KL-UCB policy, and the research tools used in the two mixture arguments.

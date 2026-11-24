@@ -1,12 +1,14 @@
 # Related work and attribution
 
-The contribution is an explicit solution of reward-halfspace composite certification and its fixed-block measurement game. State discrimination, spectral measurements, classical type testing, operator pinching and modular logarithmic derivatives are established tools. Their use here should be separated from the new feasible many-copy witnesses and their operational consequences.
+The project gives the exact reward-halfspace certification exponent, the common-measurement value for each fixed block, and the leading regret for arbitrary quantum-memory policies. State discrimination, spectral measurements, type testing, pinching and modular logarithmic derivatives supply the underlying tools.
 
 ## Closest quantum-learning problem
 
 [Siu Hin Ng, arXiv:2609.40339v1](https://arxiv.org/abs/2609.40339v1), *The Single-Copy Quantum Bandit Is Classical: An Exact Spectral Collapse* (2026), defines the states-as-arms reward model. Its Theorem 1 establishes the one-copy spectral collapse and a logarithmic-derivative least-favorable state. Section VI gives a Umegaki converse for arbitrary-memory regret and leaves the composite IID certification exponent and its adaptive-regret reduction open. Section VII defines the common-measurement block values separately from the pairwise min–max envelopes and reports two-copy numerical evidence.
 
-The present work credits that one-copy result and model. It adds the exact all-copy uniform certification exponent, a strong converse, all-support mixture constructions and the equality of every fixed finite-block value. The unknown phase shared across all copies is the step that turns a one-copy witness into a feasible mixture of fixed IID alternatives. The unrestricted adaptive-regret optimum remains outside the result.
+The [certification theorem](../science/certification.md) evaluates the composite exponent using a feasible pinched mixture of fixed IID alternatives. The [adaptive proof](../science/adaptive_regret.md) answers the remaining coefficient question in Ng's Open Problem 1. It caps the number of pulls of the changed arm, represents the cutoff event by a fixed-copy effect, and uses a finite cover of full-rank replacement states to make pointwise consistency sufficient. This matches the single-copy regret coefficient for arbitrary quantum memory and strengthens the earlier Umegaki converse when the two coefficients differ.
+
+[Maillard, Munos and Stoltz (2011)](https://proceedings.mlr.press/v19/maillard11a.html) and [Cappé et al. (2013)](https://doi.org/10.1214/13-AOS1119) give the classical finite-support KL-UCB policy and its matching asymptotic upper bound. Ng applies this policy to spectral outcomes. The revision extends the converse while using that attaining policy.
 
 ## Relative entropy and composite testing
 
