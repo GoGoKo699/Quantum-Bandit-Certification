@@ -20,9 +20,9 @@ The worst-case alternative may depend on the sample budget. That is part of unif
 
 The reward-halfspace experiment is the certification component of the states-as-arms quantum bandit model studied by [Ng](https://arxiv.org/abs/2609.40339v1). The result establishes that this certification component has no collective exponent advantage. It also establishes that every fixed finite measurement block has the same worst-case information value as separate reward readout.
 
-These statements do not provide the optimal logarithmic regret coefficient of an unrestricted adaptive quantum-memory policy. In a bandit, the arm states are unknown, sampling times depend on previous outcomes, and retained quantum memory can influence later allocations. Pointwise consistency of a policy on every instance is not a uniform guarantee over a continuum of alternatives. An argument that averages such guarantees under a common prior needs its own proof.
+In the [adaptive regret proof](adaptive_regret.md), stop a simulation immediately before the policy requests one more copy of a chosen arm than the cutoff permits. The simulated acceptance is the probability of staying below the cutoff. It is a fixed-copy measurement even though the learner can retain systems from all arms. The finite family of smoothed alternatives makes the cutoff test sensitive to whether the learner samples a genuinely better arm often enough.
 
-Accordingly, a pairwise Umegaki regret lower bound should remain a lower bound. The certification theorem rules out attaining its larger information rate through a uniform fixed-sample certificate; it does not by itself prove that every adaptive learner must have the classical regret coefficient.
+This supplies the exact logarithmic exploration cost with quantum memory. The [two-arm example](examples.md#a-qubit-bandit-with-a-strict-converse-improvement) quantifies the gap between that coefficient and the earlier Umegaki lower bound.
 
 ## Leading rates and practical costs
 

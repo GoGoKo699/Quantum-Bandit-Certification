@@ -1,13 +1,13 @@
-# Thirty milestones for uniform quantum certification
+# Thirty milestones for quantum bandit certification and regret
 
-This is the project's common understanding map. Its 30 targets depend on the scientific contribution, with **12 background milestones** followed by **18 narrative milestones**. The background connects physical specimens and measurements to the statistical and operator framework. The narrative gives more space to the new shared-phase witnesses, their two different uses, and the operational conclusions. Both phases end with an integrated account.
+This is the project's common understanding map. Its 30 targets depend on the scientific contribution, with **12 background milestones** followed by **18 narrative milestones**. The background connects physical specimens and measurements to the statistical and operator framework. The narrative develops the shared-phase witnesses and uses them for collective certification, fixed-block information, and adaptive regret. Both phases end with an integrated account.
 
-The sole educational anchor is John Watrous, *The Theory of Quantum Information* (2018), using the author's standard-layout manuscript linked from the [author's book page](https://cs.uwaterloo.ca/~watrous/TQI/). Chapter and section numbers below refer to that version. The book uses base-two logarithms; the project uses natural logarithms, so a book divergence is multiplied by $`\log 2`$ to express the same quantity in nats. Watrous supplies foundations; the project supplies the composite-family quantifiers, classical type-test estimates, logarithmic-derivative witness, and full certification argument where indicated. Primary research attribution is maintained in the [related-work account](../references/RELATED_WORK.md). The [anchor bridge](WATROUS_BRIDGE.md) explains the translation between the textbook and these project statements.
+The sole educational anchor is John Watrous, *The Theory of Quantum Information* (2018), using the author's standard-layout manuscript linked from the [author's book page](https://jhwatrous.github.io/books-and-courses.html). Chapter and section numbers below refer to that version. The book uses base-two logarithms; the project uses natural logarithms, so a book divergence is multiplied by $`\log 2`$ to express the same quantity in nats. Watrous supplies foundations; the project supplies the composite-family quantifiers, certification proof, and reduction to adaptive regret where indicated. Primary research attribution is maintained in the [related-work account](../references/RELATED_WORK.md). The [anchor bridge](WATROUS_BRIDGE.md) explains the translation between the textbook and these project statements.
 
 | Phase | IDs | Integrating endpoint |
 | --- | --- | --- |
 | Background and preliminaries | M01–M12 | A complete operational specification of the known-null uniform task |
-| Narrative and contribution | M13–M30 | One connected explanation of the theorem, witnesses, consequences, and limits |
+| Narrative and contribution | M13–M30 | One connected explanation of the witnesses, fixed-sample theorem, and adaptive regret law |
 
 ## Background and preliminaries
 
@@ -229,26 +229,26 @@ The sole educational anchor is John Watrous, *The Theory of Quantum Information*
 - **Conceptual connection:** Rank, threshold position, and the error convention affect different parts of the model; they must not be conflated into one generic “boundary case.”
 - **Source pointers:** Watrous, Chapter 2, §2.1, Chapter 3, §3.1, and Chapter 5 support conventions; [certification — endpoint cases](../science/certification.md#endpoint-cases); [model — exact certification theorem](../science/model.md#exact-certification-theorem); [modular mixtures — support completion](../science/modular_mixtures.md#a-normalized-orbit-when-spectral-populations-vanish).
 
-### M28 — What the statistical equality costs to implement
+### M28 — A test for too few pulls
 
-- **Central question:** What resources are paid by the attaining protocol and by its collective competitors?
-- **Understanding target:** Account for supplied copies, known classical descriptions, one incoming quantum register, outcome counts, spectral readout, classical processing, and the binary output. Explain why a generic dense reward may be expensive to measure and why fixed hardware error need not preserve an exponential confidence rate.
-- **Dependencies and story role:** Uses M01–M04, M24, and M27. It joins the theorem's statistical conclusion to the actual physical acquisition scheme.
-- **Conceptual connection:** Equality of supplied-copy exponents does not establish equal runtime, energy, finite-copy errors, or hardware advantage; no QRAM or preparation inverse is hidden in the attaining test.
-- **Source pointers:** Watrous, Chapter 2, §§2.1–2.3 for operational foundations; the project-specific accounting and precision estimate are in [resources](../science/resources.md); [examples — finite confidence](../science/examples.md#a-finite-confidence-test).
+- **Central question** How can a fixed number of copies represent an event in an adaptive experiment with quantum memory?
+- **Understanding target** Fix a suboptimal arm and a cutoff $`m`$. Preload copies for the simulation, reject upon the first request for copy $`m+1`$ of that arm, and identify the measurement effect on its $`m`$-copy register. Other arms are held fixed between instances.
+- **Dependencies and story role** Uses M03–M05, M12, and M23. It transfers the fixed-sample converse to a particular event of a sequential policy.
+- **Conceptual connection** The policy may process its whole quantum register to choose the next classical arm label. On each branch that stays within the cutoff, the simulator and original policy use the same specimens and apply the same instruments.
+- **Source pointers** Watrous, Chapter 2, §§2.2–2.3 for channels and measurements. [Adaptive regret](../science/adaptive_regret.md) supplies the stopped experiment and bandit model.
 
-### M29 — The learning consequence and the remaining adaptive question
+### M29 — A fixed finite family of better arms
 
-- **Central question:** What does this certification result change about the proposed value of collective quantum examples?
-- **Understanding target:** Explain the established absence of a collective uniform certification exponent advantage and the exact finite-block consequence, while preserving the separate unknown-state, stopping-time, and pointwise-consistency issues of unrestricted adaptive bandit regret. Identify inherited one-copy results and the new many-copy evaluation.
-- **Dependencies and story role:** Uses M12–M13 and M23–M28. It connects the proved mechanism to its scientific significance without converting an unresolved adaptive reduction into a result.
-- **Conceptual connection:** Pairwise information can be present yet unavailable to one common certificate over a full alternative family. Reducing that family, changing the input promise, or asking an adaptive question requires its own analysis.
-- **Source pointers:** Watrous, Chapter 3, §3.1 and Chapter 5, §5.2 as foundations; [interpretation — learning conclusion](../science/interpretation.md#the-learning-conclusion-and-its-boundary); [block measurements — distinctions](../science/block_measurements.md#two-distinctions-that-protect-the-conclusion); [related work](../references/RELATED_WORK.md).
+- **Central question** How does consistency on each fixed bandit instance control one test against a continuum of alternatives?
+- **Understanding target** Start with the better-reward phase orbit. Mix in a small maximally mixed component so every alternative is strictly positive and still improves the best reward. Use compactness and the eigenvalue floor to cover the family by finitely many operator-order comparisons, and tensorize those comparisons with an arbitrarily small exponent penalty.
+- **Dependencies and story role** Uses M08, M15–M17, M21–M23, and M28. It supplies the finite set of fixed replacements on which to apply pointwise consistency before returning to the phase average.
+- **Conceptual connection** If a replacement arm is strictly best and is pulled at most $`m`$ times, the policy pays positive regret on at least $`T-m`$ rounds. The resulting probability bound can be maximized over the fixed finite set.
+- **Source pointers** Watrous, Chapter 1, §§1.1–1.2 for positive operators and compactness. [Adaptive regret](../science/adaptive_regret.md) gives the finite cover and probability estimate.
 
-### M30 — One integrated account of the contribution
+### M30 — The optimal logarithmic regret
 
-- **Central question:** How do the task, two witnesses, matched protocol, and learning limits form one scientific story?
-- **Understanding target:** Explain the whole chain: a known coherent null and one unknown better-reward IID source; the reverse-KL optimizer; support completion and a feasible shared-phase orbit; exact measured divergence from the logistic mixture; pinching and a fixed-error strong converse; spectral attainment; the Umegaki sandwich; finite-block repetition; endpoints, resources, and the unresolved adaptive-regret boundary.
-- **Dependencies and story role:** Integrates all earlier milestones and closes the narrative phase. The target is the connected contribution and its scope, not every technical lemma in the repository.
-- **Conceptual connection:** The same alternative family makes each witness legitimate, the two witnesses have different analytical roles, and the matching spectral test turns the converse into an exact operational conclusion.
-- **Source pointers:** Watrous, Chapters 1–5 only to the extent used in M01–M29; [scientific reading route](../science/README.md), [model](../science/model.md), [certification](../science/certification.md), [modular mixtures](../science/modular_mixtures.md), [block measurements](../science/block_measurements.md), [examples](../science/examples.md), [interpretation](../science/interpretation.md), and [resources](../science/resources.md).
+- **Central question** Why do collective measurements leave the optimal leading regret coefficient unchanged?
+- **Understanding target** Combine the under-pull test and finite cover with the pinched-mixture bound to obtain polynomial decay below each suboptimal arm's logarithmic pull threshold. Derive the expected regret coefficient and explain why spectral reward readout followed by classical KL-UCB attains it. Use geometric horizons and monotonicity of pull counts for the almost-sure lower bound of an anytime policy.
+- **Dependencies and story role** Integrates M01–M29. M21–M23 give the fixed-sample converse underlying the sequential reduction. M28–M29 adapt its operational inputs and quantify the link to consistency.
+- **Conceptual connection** The same reverse-KL quantity describes two tasks. It sets the certification exponent for a known reference and the leading exploration requirement for a fixed unknown bandit instance. The charged resources are copies or pulls, with storage, readout, and classical computation accounted for separately.
+- **Source pointers** [Scientific reading route](../science/README.md), [adaptive regret](../science/adaptive_regret.md), [examples](../science/examples.md), [resource account](../science/resources.md), and [related work](../references/RELATED_WORK.md).

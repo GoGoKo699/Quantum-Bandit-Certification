@@ -1,7 +1,8 @@
 {
   "status": "passed",
-  "generated_at_utc": "2026-11-15T09:16:21.003570+00:00",
-  "script_sha256": "68ece766969d15df11ffc05c53b13167f243904d9790149539714dc3ee9dab45",
+  "generated_at_utc": "2026-11-24T11:30:14.485926+00:00",
+  "script_sha256": "532749cdcb54abdca378fac33b3c25d17733a86ffa64099c3ae4d0cc010df21b",
+  "adaptive_script_sha256": "88a2d1beb0e0fa7dd68d5f30a26c09a2e356b2bd12eaadfd17d01699370b68f2",
   "seed": 20261115,
   "versions": {
     "python": "3.12.14",
@@ -162,10 +163,33 @@
     "pointwise_alternative_coherence": 0.1279621616172504,
     "pointwise_comparison_scope": "one-dimensional real-coherence numerical minimization; not a certified global optimization"
   },
+  "adaptive_qubit": {
+    "spectral_K_nats_open_interval": [
+      0.830365,
+      0.830366
+    ],
+    "Umegaki_D_nats_open_interval": [
+      1.262,
+      1.267
+    ],
+    "optimal_regret_coefficient_interval": [
+      0.541929703287466,
+      0.5419303559278149
+    ],
+    "earlier_Umegaki_lower_coefficient_interval": [
+      0.35516969218626676,
+      0.35657686212361334
+    ]
+  },
+  "stopped_two_arm": {
+    "horizon": 3,
+    "first_arm_cap": 1,
+    "event_probability_exact": "47/60"
+  },
   "limits": [
-    "Floating-point finite-dimensional checks, not interval arithmetic or a proof certificate.",
+    "The original matrix and certification checks are finite-dimensional floating-point diagnostics.",
     "No optimization over all collective POVMs or all alternative states is performed.",
-    "Finite checks do not establish asymptotic exponents, the all-block game theorem, or novelty.",
-    "No arbitrary-memory adaptive bandit regret, gate synthesis, hardware noise, or runtime advantage is verified."
+    "The adaptive-qubit and stopped-effect checks use exact rational arithmetic for the stated examples.",
+    "The analytical arguments establish the asymptotic certification, finite-block and arbitrary-memory regret theorems."
   ]
 }

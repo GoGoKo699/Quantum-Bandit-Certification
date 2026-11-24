@@ -1,6 +1,6 @@
 # Inputs, measurements, and physical costs
 
-The result concerns certification of one **known null state** against an unknown fixed IID alternative whose reward is above a threshold. It determines a statistical limit for that experiment. The model and error conventions are in [model.md](model.md); the unrestricted converse is in [certification.md](certification.md).
+The result concerns certification of one **known null state** against an unknown fixed IID alternative whose reward is above a threshold. The model and error conventions are in [model.md](model.md), and the unrestricted converse is in [certification.md](certification.md). In the [bandit task](adaptive_regret.md) the learner receives the same known effect and does not receive the arm states or their spectra.
 
 ## What the tester receives
 
@@ -46,4 +46,8 @@ No postselected successful branch is used by the attaining test. All specimens a
 
 The proofs use ideal source states and measurements. If the implemented single-copy measurement channel is within total variation error $`\varepsilon_{\rm meas}`$ uniformly on all input states, a hybrid argument bounds the change in either error probability after $`n`$ independent readouts by $`n\varepsilon_{\rm meas}`$. This additive bound does not preserve an exponentially small type-II error at a fixed implementation error. A claim about noisy hardware requires its actual noise model and a corresponding statistical analysis.
 
-The equality proved here is an equality of leading rates. It does not say that finite-copy risks, gate counts, numerical stability, or runtime are identical for every readout scheme. In particular, the fixed-block statement in [block_measurements.md](block_measurements.md) is a max–min information statement; it does not solve arbitrary stopping-time, adaptive quantum-memory bandit regret. [Ng, §§VI–VII](https://arxiv.org/html/2609.40339v1) separates the composite-testing question from that further learning reduction. The remaining boundaries are collected in [certification.md](certification.md).
+## Bandit sampling and memory
+
+Every arm request returns one specimen and counts as one pull. The attaining policy keeps per-arm spectral counts in classical memory and solves an empirical KL index at each decision. It can discard a specimen as soon as the spectral measurement is complete. The converse allows arbitrary protected quantum storage and joint instruments with specimens from different arms. It still requires a classical request for each fresh independent specimen.
+
+The bandit result compares leading regret at fixed instance. Physical storage time, state preparation, readout synthesis and index-computation time are separate costs. The [stopped experiment](adaptive_regret.md) uses a preallocated copy queue in the proof. The attaining learner needs no such queue.

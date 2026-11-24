@@ -1,6 +1,6 @@
 # Quantum Bandit Certification
 
-**Can collective quantum measurements certify a source against every better-reward alternative more efficiently?** For a known reference state, a known reward observable and a fixed reward threshold, the optimal asymptotic confidence rate is exactly classical.
+**Can quantum memory reduce exploration in a bandit whose arms supply unknown quantum states?** For a known common reward observable, separate spectral readout followed by classical KL-UCB attains the exact leading logarithmic regret, even against policies that retain and jointly measure every specimen.
 
 Let $`F=\sum_i f_iP_i`$ be a known effect, $`\rho`$ a reference state, and $`\mathrm{Tr}(\rho F)\lt r\lt f_{\max}`$. An unknown source supplies independent copies of either $`\rho`$ or one fixed state $`\sigma`$ satisfying $`\mathrm{Tr}(\sigma F)\geq r`$. One test must work against every such alternative. Put
 
@@ -13,14 +13,15 @@ For every fixed allowed Type-I error strictly between zero and one, the best wor
 
 | Result | Consequence | Scientific account |
 | --- | --- | --- |
+| Exact adaptive regret coefficient | Spectral KL-UCB matches the optimum with arbitrary quantum memory | [Adaptive regret theorem](science/adaptive_regret.md) |
 | Exact collective certification exponent | Independent reward readout attains the unrestricted rate | [Certification theorem](science/certification.md) |
 | Strong converse and finite-confidence bounds | A larger exponential rate forces acceptance of the reference to vanish | [Finite-confidence proof](science/certification.md#exact-finite-confidence-converse) |
 | Every fixed block has value $`V_m=K`$ | A common collective measurement on any finite number of copies cannot improve the worst-case KL rate per copy | [Block measurements](science/block_measurements.md) |
 | Exact mixture measured divergence $`nK`$ | An explicit mixture of fixed IID alternatives defeats the apparent pairwise advantage | [Modular mixtures](science/modular_mixtures.md) |
 
-The mechanism is a family of different states with the same better reward. Averaging their shared modular phase across the whole batch produces a feasible adversarial mixture. This does not change the source on every copy: each component is still one fixed IID source.
+The certification proof averages a family of states with the same better reward, each supplying one fixed IID source. The regret proof turns under-sampling an arm into a fixed-copy test. Smoothing the same phase family gives a finite set of better-arm replacements that transfers pointwise consistency to the test.
 
-[Ng's single-copy spectral collapse](https://arxiv.org/abs/2609.40339v1) and the established relative-entropy and pinching tools are foundations. The contribution here is the all-copy certification theorem, its strong converse, the exact finite-block value and the support-complete mixture construction. [Related work](references/RELATED_WORK.md) separates these conclusions from the inherited ingredients.
+[Ng](https://arxiv.org/abs/2609.40339v1) established the single-copy spectral collapse and left the arbitrary-memory coefficient open. The [related-work account](references/RELATED_WORK.md) traces the fixed-sample results, the new adaptive converse and the inherited KL-UCB policy.
 
 ## Read the science
 
@@ -33,7 +34,7 @@ Start with the [model and exact claims](science/model.md), then the [connected r
 | Why is a mixture of IID sources the right witness? | [Modular mixtures](science/modular_mixtures.md) |
 | Why does every fixed measurement block have the same value? | [Block measurements](science/block_measurements.md) |
 | What happens in a complete qubit experiment? | [Worked examples](science/examples.md) |
-| What does this say about quantum learning and bandits? | [Interpretation](science/interpretation.md) |
+| How does the certificate constrain adaptive exploration? | [Adaptive regret proof](science/adaptive_regret.md) and [interpretation](science/interpretation.md) |
 | Which physical and computational costs remain? | [Resources](science/resources.md) |
 | What is established by the numerical checks? | [Verification](verification/README.md) |
 
@@ -43,7 +44,7 @@ The [LLM reading guide](llms.txt) maps the authoritative statements and proof ro
 
 The educational anchor is **John Watrous, *The Theory of Quantum Information* (2018)**, using the author's standard-layout manuscript. The [Watrous bridge](learning/WATROUS_BRIDGE.md) identifies precise source sections, translates notation and logarithm units, and supplies the steps connecting textbook foundations to this certification problem.
 
-Start with the [worked tutorial](learning/TUTORIAL.md): one detector, a coherent reference qubit, a 33-copy certificate and the shared-phase obstruction to collective improvement. The [30-milestone map](learning/MILESTONES.md) connects 12 background milestones to 18 milestones developing the contribution. The [learning overview](learning/README.md) joins these routes without requiring a cover-to-cover textbook reading.
+The [worked tutorial](learning/TUTORIAL.md) connects a 33-copy certificate to the exploration cost in a two-arm qubit bandit. The [30-milestone map](learning/MILESTONES.md) connects 12 background milestones to 18 milestones developing the contribution. The [learning overview](learning/README.md) joins these routes without requiring a cover-to-cover textbook reading.
 
 ## Reproduce the finite checks
 
@@ -52,11 +53,11 @@ python3 -m pip install -r verification/requirements.txt
 python3 verification/check_science.py
 ```
 
-The checks compare independent matrix constructions, support completion, classical optimization and exact binomial probabilities. Universal conclusions follow from the analytical proofs. Finite checks do not establish a global optimization certificate or literature priority.
+The checks compare matrix constructions, support completion, classical optimization and binomial probabilities. Exact rational checks certify the two-arm qubit comparison and verify the reduced effect for a stopped measurement example.
 
 ## Scope
 
-Dimension, reward observable, reference and threshold are fixed while the copy budget grows. The reference is known for certification; the theorem does not supply a complete learner for an unknown bandit arm. The finite-block statement concerns one common finite-outcome measurement and a worst-case information rate. Optimal regret for unrestricted adaptive quantum-memory bandit policies remains unproved.
+Certification fixes the dimension, reward observable, known reference and threshold as the copy budget grows. The regret theorem fixes a finite unknown-arm instance with independent specimens, classical arm requests, and best reward below the top eigenvalue. It compares leading expected pseudo-regret among pointwise-consistent policies.
 
 Equality of leading exponents does not mean identical finite-copy error probabilities. All supplied copies, state preparation, coherent storage and measurement synthesis have physical costs. No QRAM, inverse preparation oracle, efficient arbitrary collective readout or hardware crossover is assumed.
 

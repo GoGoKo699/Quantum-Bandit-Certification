@@ -1,6 +1,6 @@
 # The certification task and its exact limits
 
-A quantum bandit arm emits a state, and a known observable assigns that state a mean reward. Before making a claim about the value of retaining quantum examples, one must distinguish a pairwise discrimination problem from a certificate that handles every state with a better reward. This project solves the latter fixed-sample task and its finite-block information game.
+A quantum bandit arm emits a state, and a known observable assigns that state a mean reward. Before making a claim about the value of retaining quantum examples, one must distinguish a pairwise discrimination problem from a certificate that handles every state with a better reward. This page states the fixed-sample and finite-block results. The [adaptive regret theorem](adaptive_regret.md) then addresses learning with unknown arms and retained quantum memory.
 
 ## Supplied information and hypotheses
 
@@ -110,6 +110,6 @@ nK\leq\inf_{\eta\in C_n}D(\rho^{\otimes n}\Vert\eta)
 
 where $`J`$ is the number of distinct active spectral ratios $`p_i/q_i^*`$. The logarithmic remainder vanishes per copy at fixed dimension. The two mixtures serve different purposes: a logistic modular average gives the exact measured divergence, while a pinched orbit average gives the strong converse and the Umegaki bound.
 
-## Limits relevant to learning
+## Adaptive learning with unknown arms
 
-All asymptotics fix the instance first. A dimension-uniform high-precision sample frontier, noisy-memory theorem, efficient collective apparatus and optimal unrestricted adaptive bandit regret are not established. The [interpretation](interpretation.md) explains the surviving learning consequence; the [resource account](resources.md) includes acquisition, storage, control and output costs.
+In the [bandit model](adaptive_regret.md), a classical arm request supplies one independent copy of the corresponding unknown state. Among pointwise-consistent policies with arbitrary quantum memory, spectral KL-UCB attains the optimal leading logarithmic regret. The divergence for each suboptimal arm uses its spectral distribution and the best arm's mean as the threshold. The learning guarantee fixes the instance before sending the horizon to infinity. The [resource account](resources.md) describes what is supplied and counted.
