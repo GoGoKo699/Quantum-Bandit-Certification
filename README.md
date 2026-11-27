@@ -2,6 +2,15 @@
 
 **Can quantum memory reduce exploration in a bandit whose arms supply unknown quantum states?** For a known common reward observable, separate spectral readout followed by classical KL-UCB attains the exact leading logarithmic regret, even against policies that retain and jointly measure every specimen.
 
+## Use the reward readout
+
+Use one supplied specimen at a time. Apply the compiled basis change for the known reward observable, measure in the computational basis and group outcomes with the same reward eigenvalue. Record the spectral label and release the register. The [qubit example](science/examples.md#states-and-reward) uses direct Z readout and counts outcome zero as reward one.
+
+- **Certify a source.** Compute the expected spectral frequencies from the known reference. Count outcomes over the fixed copy budget and apply the [frequency distance test](science/certification.md#matching-spectral-test) to return one accept or reject decision.
+- **Choose an arm.** Pull each arm once and keep a frequency table per arm. Compute the [empirical KL-UCB indices](science/adaptive_regret.md#4-an-attaining-policy), request a fresh specimen from an arm with the largest index and update its counts. The classical finite-support policy is due to Cappé et al. and was applied to spectral outcomes by Ng. [Related work](references/RELATED_WORK.md)
+
+The sequential procedure retains classical counts between specimens. Charge preparation and delivery, the readout apparatus and resets, basis-change synthesis and the classical test or index calculation. The [resource account](science/resources.md#finite-precision-and-interpretation) gives the accumulated effect of finite readout error on the ideal-measurement guarantees.
+
 Let $`F=\sum_i f_iP_i`$ be a known effect, $`\rho`$ a reference state, and $`\mathrm{Tr}(\rho F)\lt r\lt f_{\max}`$. An unknown source supplies independent copies of either $`\rho`$ or one fixed state $`\sigma`$ satisfying $`\mathrm{Tr}(\sigma F)\geq r`$. One test must work against every such alternative. Put
 
 ```math
